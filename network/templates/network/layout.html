@@ -1,0 +1,99 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Social Network{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'network/styles.css' %}" rel="stylesheet">
+        <script src="{% static 'network/api_calls.js' %}" type="module"></script>
+        {% block script %}
+        {% endblock %}
+        {% block css %}
+        {% endblock %}
+        <style>
+    
+
+            .card{
+              
+                border: none;
+                border-radius: 10px;
+                 
+                background-color: #fff;
+              }
+              
+              
+              
+              .stats{
+              
+                    background: #f2f5f8 !important;
+              
+                  color: #000 !important;
+              }
+              .articles{
+                font-size:10px;
+                color: #a1aab9;
+              }
+              .number1{
+                font-weight:500;
+              }
+              .followers{
+                  font-size:10px;
+                color: #a1aab9;
+              
+              }
+              .number2{
+                font-weight:500;
+              }
+              .rating{
+                  font-size:10px;
+                color: #a1aab9;
+              }
+              .number3{
+                font-weight:500;
+              }
+               </style>
+    </head>
+    <body>
+        {% if user.is_authenticated %}
+            {{ user.username |json_script:"username" }}
+        {% else %}
+            {{ "" |json_script:"username" }}
+        {% endif %}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/">Network GO!</a>
+          
+            <div>
+              <ul class="navbar-nav mr-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profile' user.username %}"><strong>{{ user.username }}</strong></a>
+                    </li>
+                    <li class="nav-item ml-1">
+                      <a id="allposts-btn" class="nav-link" href="{% url 'allposts' %}">All Posts</a>
+                  </li>
+            
+                    <li class="nav-item ml-1">
+                        <a id="following-btn" class="nav-link" href="{% url 'following' %}">Following</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
+              </ul>
+            </div>
+          </nav>
+        <div id="message-div" class="container-fluid justify-content-center"></div>
+        <div class="body mt-2">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
