@@ -9,8 +9,8 @@ import json
 from .models import User, Post
 
 
-# def index(request):
-#     return HttpResponseRedirect(reverse("allposts"))
+def index(request):
+    return HttpResponseRedirect(reverse("allposts"))
 
 
 def all_posts(request):
@@ -36,9 +36,7 @@ def login_view(request):
         # Check if authentication successful
         if user is not None:
             login(request, user)
-            return render(request, "network/posts.html", {
-                "following": False
-    })
+            return HttpResponseRedirect(reverse("index"))
         else:
             return render(request, "network/login.html", {
                 "message": "Invalid username and/or password."
@@ -49,7 +47,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return render(request, "network/login.html")
+    return HttpResponseRedirect(reverse("index"))
 
 
 def register(request):
@@ -81,7 +79,7 @@ def register(request):
     else:
         return render(request, "network/register.html")
 
-@login_required
+@login_required('login')
 def profile(request, username):
     ''' GET request shows profile, PUT request toggles following status of request user on profile user '''
     try:

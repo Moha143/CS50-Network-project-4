@@ -4,10 +4,16 @@
 <html lang="en">
     <head>
         <title>{% block title %}Social Network{% endblock %}</title>
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="{% static 'network/styles.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/brands.min.css" integrity="sha512-nS1/hdh2b0U8SeA8tlo7QblY6rY6C+MgkZIeRzJQQvMsFfMQFUKp+cgMN2Uuy+OtbQ4RoLMIlO2iF7bIEY3Oyg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
         <script src="{% static 'network/api_calls.js' %}" type="module"></script>
         {% block script %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/js/all.min.js" integrity="sha512-8pHNiqTlsrRjVD4A/3va++W1sMbUHwWxxRPWNyVlql3T+Hgfd81Qc6FC5WMXDC+tSauxxzp1tgiAvSKFu1qIlA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/js/brands.min.js" integrity="sha512-helwW+1jTcWdOarbAV4eDgcPQg/WEM20j9oo7HE5caJ8hZXdW0mgYGuxafhlf4j4gYAuOL8WsX1QTy6HUnpWKA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         {% endblock %}
         {% block css %}
         {% endblock %}
@@ -61,35 +67,37 @@
             {{ "" |json_script:"username" }}
         {% endif %}
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="/">Network GO!</a>
-          
-            <div>
-              <ul class="navbar-nav mr-auto">
-                {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'profile' user.username %}"><strong>{{ user.username }}</strong></a>
-                    </li>
-                    <li class="nav-item ml-1">
-                      <a id="allposts-btn" class="nav-link" href="{% url 'allposts' %}">All Posts</a>
+          <a class="navbar-brand" href="/">Network GO!</a>
+        
+          <div>
+            <ul class="navbar-nav mr-auto">
+              {% if user.is_authenticated %}
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'profile' user.username %}"><strong>{{ user.username }}</strong></a>
                   </li>
-            
-                    <li class="nav-item ml-1">
-                        <a id="following-btn" class="nav-link" href="{% url 'following' %}">Following</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Log In</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'register' %}">Register</a>
-                    </li>
-                {% endif %}
-              </ul>
-            </div>
-          </nav>
+              {% endif %}
+              <li class="nav-item ml-1">
+                  <a id="allposts-btn" class="nav-link" href="{% url 'allposts' %}">All Posts</a>
+              </li>
+              {% if user.is_authenticated %}
+                  <li class="nav-item ml-1">
+                      <a id="following-btn" class="nav-link" href="{% url 'following' %}">Following</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                  </li>
+              {% else %}
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'register' %}">Register</a>
+                  </li>
+              {% endif %}
+            </ul>
+          </div>
+        </nav>
+       
         <div id="message-div" class="container-fluid justify-content-center"></div>
         <div class="body mt-2">
             {% block body %}
