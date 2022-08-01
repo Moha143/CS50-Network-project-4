@@ -1,0 +1,188 @@
+.navbar-brand {
+    font-size: 2.5em;
+    font-weight: bolder;
+}
+.nav-item {
+    font-size: 1.5em;
+}
+.post {
+    width: 80%;
+    border-radius: 20px;
+    border-color: rgb(47, 198, 67);
+    padding: 15px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    text-align: left;
+    display: inline-block;
+}
+.post a {
+    color: inherit;
+    font-size: 1.3em;
+}
+.post a:hover{
+    color: inherit;
+    text-decoration: none;
+}
+
+a.active {
+    font-weight: bold;
+}
+
+#newpost-view{
+    background-color: rgb(250, 250, 250);
+    width: 78%;
+}
+
+#newpost-form {
+    padding: 15px;
+}
+textarea {
+    resize:none;
+}
+#newpost-submit {
+    border-radius: 40px;
+    height:80px;
+    width: 80px;
+    padding-bottom: 40px;
+    padding-left: 20px;
+    font-size: 2.6em;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+#posts-view {
+    text-align: center;
+}
+.title {
+    text-align: center;
+}
+#profile-view {
+    text-align: center;
+}
+.card {
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    background-color: whitesmoke;
+    font-size: 1.5em;
+}
+.timestamp {
+    float: right;
+    font-style: italic;
+    font-size: 0.9em;
+    color: darkgray;
+}
+
+.like-btn{
+    font-size: 2.5em;
+    text-align: left;
+}
+.like-btn:hover{
+    cursor: pointer;
+}
+.likes-count-span {
+    font-size: 0.95em;
+    text-align: right;
+}
+pre {
+    width: 100%;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,
+    "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1em;
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.col {
+    padding-left: 0;
+}
+
+.like-btn.liked::before {
+    content: '\2665';
+    color:red;
+}
+.like-btn.unliked::before {
+    content: '\2661';
+}
+
+.pagination span {
+    border-radius: 5px;
+    transition: background-color .3s;
+    color: black;
+    font-weight: bold;
+    display: none;
+}
+.pagination #prev-page-btn,#next-page-btn{
+    display: inline-block;
+}
+.pagination span:focus {
+    border-width: 0;
+    box-shadow: none;
+}
+.pagination span.active {
+    border-radius: 5px;
+    background-color: #ddd;
+    font-weight: normal;
+}
+.pagination span:hover{
+    cursor: pointer;
+}
+.pagination span:hover:not(.active) {
+    background-color: #ddd;
+    color: black;
+}
+
+.pagination .disabled{
+    display: none;
+}
+.edit-btn {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-left: 1em;
+    padding:2px;
+    border-color: rgb(117, 62, 62);
+    border-style: solid;
+    border-width: 1.5px;
+    border-radius: 8px;
+    color: rgb(50, 212, 0);
+}
+.edit-btn:hover {
+    cursor: pointer;
+    background-color: lightgray;
+}
+
+.edit-btn small{
+    font-weight: 550;
+    color:black;
+}
+
+#edit-body {
+    margin-top: 15px;
+    margin-right: 15px;
+    width: 90%;
+}
+#edit-submit {
+    margin-top: 5px;
+    display: inline-block;
+    float: right;
+    font-size: 2em;
+
+}
+#message-div{
+    text-align: center;
+    position: absolute;
+    top: 10px;
+    z-index: 5;
+}
+.alert {
+    margin: 15px;
+    width: fit-content;
+    text-align: center;
+    display: inline-block;
+}
+
+
+
+#login-view, #register-view {
+    width: 60%;
+    text-align: center;
+    margin-left: 20%;
+}
