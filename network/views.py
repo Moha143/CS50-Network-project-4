@@ -139,6 +139,7 @@ def api_post(request, post_id):
     except Post.DoesNotExist:
         return HttpResponseNotFound(f"<h1>Post {post_id} does not exist</h1>")
     except User.DoesNotExist:
+        
         return HttpResponseNotFound(f"<h1>User {request.user.id} does not exist</h1>")
 
     if request.method == 'GET':
