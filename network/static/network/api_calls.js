@@ -81,7 +81,7 @@ export function render_html(post){
     if(post.user === username ) {
         div.innerHTML = `<div data-postid="${post.id}">
                             <a href="/profile/${post.user}">@<b>${post.user}</b></a><label class="timestamp">${post.timestamp}</label>
-                            <span class="edit-btn" aria-label="Edit">&#128393;</span>                         
+                           <i class="icon-edit edit-btn editss"  aria-label="Edit"></i>                        
                             <pre>${post.body}</pre>
                             <div class="container-fluid">
                                 <div class="row justify-content-between">
@@ -195,7 +195,7 @@ export function set_edits() {
             const edit_div = document.createElement('div');
             edit_div.id = "edit_view";
             edit_div.innerHTML =`<form id="edit-form" class="form-inline"><textarea id="edit-body" rows="3", maxlength="200" name="edit-body" class="form-control">${post_text}</textarea> 
-                                <button id="edit-submit" type="submit" class="btn btn-light">&#128190;</button></form>`;
+                                <button id="edit-submit" type="submit" class="btn btn-info"><i class="icon-save "></i></button></form>`;
             post_div.replaceChild(edit_div, post_div.childNodes[6]);
             edit_div.firstChild.onsubmit = () => {
                 const post_id = post_div.dataset.postid;
